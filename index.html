@@ -51,8 +51,9 @@ h2{font-size:1.5rem;margin:0 0 6px;border-bottom:1px solid var(--line);padding-b
 .lang{flex:1 1 200px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .bar{height:6px;background:var(--line);border-radius:4px;margin-top:8px;overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 1s}
-.contact a{display:inline-block;margin:0 10px 10px 0;padding:10px 18px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
-.contact a.alt{background:var(--card);color:var(--text);border:1px solid var(--line)}
+.contact a,.contact button.alt{display:inline-block;margin:0 10px 10px 0;padding:10px 18px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;border:0;font-size:1rem;line-height:1.6}
+.contact a.alt,.contact button.alt{background:var(--card);color:var(--text);border:1px solid var(--line)}
+.contact a.alt:hover,.contact button.alt:hover{border-color:var(--accent)}
 footer{padding:30px 0;color:var(--muted);font-size:.85rem;text-align:center}
 </style>
 </head>
@@ -87,6 +88,9 @@ footer{padding:30px 0;color:var(--muted);font-size:.85rem;text-align:center}
   <p class="sub">Vamos falar!</p>
   <a href="mailto:dedeee.dev@gmail.com">✉️ dedeee.dev@gmail.com</a>
   <a class="alt" href="https://github.com/ItsTheDede" target="_blank" rel="noopener">GitHub</a>
+  <button class="alt" id="discord" type="button" title="Clica para copiar">💬 Discord: DedeItsCute</button>
+  <a class="alt" href="https://twitter.com/Dedde076" target="_blank" rel="noopener">🐦 Twitter: @Dedde076</a>
+  <a class="alt" href="https://steamcommunity.com/profiles/76561199121354777" target="_blank" rel="noopener">🎮 Steam</a>
 </section>
 </main>
 <footer>Feito com 🧡 e código • Dede</footer>
@@ -134,6 +138,13 @@ new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){document.qu
 
 // fox easter egg
 let n=0;document.getElementById("fox").onclick=e=>{n++;e.target.textContent=["🦊","🐾","🧡","🎨","🤾"][n%5]};
+
+// discord: copy username
+const dc=document.getElementById("discord"),dcText=dc.textContent;
+dc.onclick=()=>{
+ const done=()=>{dc.textContent="✅ Copiado!";setTimeout(()=>dc.textContent=dcText,1500)};
+ try{navigator.clipboard.writeText("DedeItsCute").then(done,done)}catch(e){done()}
+};
 
 // theme toggle
 document.getElementById("theme").onclick=()=>{const r=document.documentElement;
